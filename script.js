@@ -2,24 +2,20 @@
 window.addEventListener("load", function(){
    let form = document.querySelector("form");
    form.addEventListener("submit", function(event){
+      event.preventDefault();
       let pilotName = document.querySelector("input[name=pilotName]");
       let coPilotName = document.querySelector("input[name=copilotName]");
       let fuelLevel = document.querySelector("input[name=fuelLevel]");
       let cargoMass = document.querySelector("input[name=cargoMass]");
          if((pilotName.value === "" || coPilotName.value === "" || fuelLevel.value === "" || cargoMass.value === "")){
-            alert("All fields are required!");
-            event.preventDefault();
+            alert("All fields are required!");  
          }   
          if((isNaN(fuelLevel.value)) || (isNaN(cargoMass.value))){
-            alert("Please enter a valid number input");
-            //stop the form submission
-            event.preventDefault();
+            alert("Please enter a valid number input");         
          }
          
          if((!isNaN(pilotName.value)) || (!isNaN(coPilotName.value))){
             alert("Please enter valid name in text");
-            //stop the form submission 
-            event.preventDefault();
          }
 
          if((fuelLevel.value < 10000) && (cargoMass.value > 10000)){
@@ -36,7 +32,6 @@ window.addEventListener("load", function(){
                     <li id="cargoStatus">Cargo mass is too heavy for launch.</li>
                 </ol>
                 `
-                event.preventDefault();
          }
 
          if((fuelLevel.value > 10000) && (cargoMass.value > 10000)){
@@ -53,7 +48,7 @@ window.addEventListener("load", function(){
                   <li id="cargoStatus">Cargo mass is too heavy for launch.</li>
                </ol>
                `
-             event.preventDefault();
+
             
          }
 
@@ -70,9 +65,7 @@ window.addEventListener("load", function(){
                   <li id="fuelStatus">Fuel level too low for launch.</li>
                   <li id="cargoStatus">Cargo mass is sufficient for launch.</li>
                </ol>
-               `
-             event.preventDefault();
-            
+               `            
          }
 
          if((fuelLevel.value > 10000) && (cargoMass.value < 10000)){
@@ -88,9 +81,7 @@ window.addEventListener("load", function(){
                   <li id="fuelStatus">Fuel is sufficient for launch.</li>
                   <li id="cargoStatus">Cargo mass is sufficient for launch.</li>
                </ol>
-               `
-             event.preventDefault();
-            
+               `            
          }
       })
 });
